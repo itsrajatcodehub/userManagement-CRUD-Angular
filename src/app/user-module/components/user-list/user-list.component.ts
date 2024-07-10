@@ -59,7 +59,7 @@ export class UserListComponent implements OnInit, AfterViewInit {
   }
 
   edit(row: any) {
-    console.log("edit", row);
+    // console.log("edit", row);
     const dialogRef = this.dialog.open(UserDetailsComponent, {
       data: { mode: 'edit', row },
       height: '90vh',

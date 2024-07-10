@@ -21,20 +21,19 @@ export class UserService {
 
 
   getData(): Observable<User[]> {
-    console.warn("getData called");
+    // console.warn("getData called");
     return of([...this.users]);
   }
   
   saveData(data: User): Observable<void> {
-    console.warn("saveData called");
+    // console.warn("saveData called");
     this.users.push(data);
     return of(undefined);
   }
   
   editData(update: User): Observable<void> {
-    console.warn("editData called");
+    // console.warn("editData called");
     const index = this.users.findIndex(i => i.userid === update.userid);
-    console.log("index", index);
     
     if (index !== -1) {
       this.users[index] = update;
@@ -43,7 +42,7 @@ export class UserService {
   }
   
   deleteData(data: User): Observable<void> {
-    console.warn("deleteData called");
+    // console.warn("deleteData called");
     this.users = this.users.filter(x => x.userid !== data.userid);
     return of(undefined);
   }

@@ -35,3 +35,17 @@
     width: 55%;
     text-align: end;
 }
+
+.containerr {
+    background-image: url('/assets/background.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    overflow-y: hidden;
+}
+
+@media (max-width: 550px) {
+    .typing {
+        overflow-wrap: break-word;
+    }
+}
