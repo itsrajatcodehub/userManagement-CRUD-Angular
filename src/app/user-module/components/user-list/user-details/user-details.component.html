@@ -1,0 +1,76 @@
+<div class="container p-7">
+    <h1 class="mb-8 text-3xl">{{isEditMode ? 'Edit the Details' : 'Add the Details'}}</h1>
+    <form [formGroup]="userForm" (ngSubmit)="onSave()">
+
+        <div class="w-full flex">
+            <label class="w-1/5 pt-3.5">User ID :</label>
+            <mat-form-field class="w-4/5">
+                <input matInput formControlName="userid" placeholder="Enter User ID" [readonly]="isEditMode">
+            </mat-form-field>
+        </div>
+       
+        <div class="w-full flex">
+            <label class="w-1/5 pt-3.5">Username :</label>
+            <mat-form-field class="w-4/5">
+                <input matInput formControlName="username" placeholder="Enter Username">
+            </mat-form-field>
+        </div>
+
+        <div class="w-full flex">
+            <label class="w-1/5 pt-2">Gender : </label>
+            <mat-radio-group formControlName="gender" class="w-4/5">
+                <mat-radio-button value="male">Male</mat-radio-button>
+                <mat-radio-button value="female">Female</mat-radio-button>
+                <mat-radio-button value="other">Other</mat-radio-button>
+            </mat-radio-group>
+        </div>
+
+        <div class="w-full flex mt-3.5">
+            <label class="w-1/5 pt-3.5">Date of Birth : </label>
+            <mat-form-field class="w-4/5">
+                <input matInput [matDatepicker]="picker" formControlName="dob"  placeholder="Select DOB" [max]="tomorrow"/>
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+        </div>
+
+        <div class="w-full flex">
+            <label class="w-1/5 pt-3.5">Age : </label>
+            <mat-form-field class="w-4/5">
+                <input matInput type="number" formControlName="age"  placeholder="Enter Age"/>
+            </mat-form-field>
+        </div>
+        
+        <div class="w-full flex">
+            <label class="w-1/5 pt-3.5">Address : </label>
+            <mat-form-field class="w-4/5">
+                <textarea matInput formControlName="address"  placeholder="Enter Address"></textarea>
+            </mat-form-field>
+        </div>
+        
+        <div class="w-full flex">
+            <label class="w-1/5 pt-3.5">Country : </label>
+            <mat-form-field class="w-4/5">
+                <mat-select formControlName="country"  placeholder="Select Country">
+                    <mat-option *ngFor="let country of countries" [value]="country">
+                        {{ country }}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+
+        <div class="w-full flex justify-between">
+            <!-- <span class="underline text-red-600 cursor-pointer" (click)="clear()">Clear form</span> -->
+            <span>
+                <button mat-raised-button color="warn" (click)="clear()">Clear</button>
+            </span>
+            
+            <span>
+                <button mat-raised-button color="primary" type="submit" [disabled]="userForm.invalid">{{ isEditMode ? 'Update' : 'Save' }}</button>
+                &nbsp;
+                <button mat-raised-button color="warn" (click)="onCancel()">Cancel</button>
+            </span>
+        </div>
+    </form>
+</div>
